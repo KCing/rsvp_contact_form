@@ -165,11 +165,13 @@ h1 {
 
 .form-image {
     border-radius: 2rem;
-    width: 100%;
     max-width: 650px;
-
     margin-top: -13px;     /* pulls it upward */
     margin-bottom: 10px;  /* controls space below */
+
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
 }
 
 /* ===============================
