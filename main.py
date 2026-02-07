@@ -25,7 +25,7 @@ def home():
                 writer.writerow(headers)
             writer.writerow([form.data["name"],form.data["email"],form.data["phone"],
                              form.data["attend"],form.data["member"],form.data["message"], datetime.now().strftime("%Y-%m-%d")])
-            flash("Registration has been submitted!")
+            flash(f"Thank you {form.name.data}.\nYou have been registered.")
             return redirect(url_for("home"))
     return render_template("index.html", form=form)
 
