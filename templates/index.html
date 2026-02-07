@@ -12,27 +12,29 @@
     <img src="{{ url_for('static', filename='hori_logo.jpeg') }}"
      alt="MenXcel Program Flier"
      class="form-image">
-        {{form.hidden_tag()}}
-        {{form.name.label()}}
-        {{form.name()}}
-        {{form.email.label()}}
-        {{form.email()}}
-        {{form.phone.label()}}
-        {{form.phone()}}
-        {{form.attend.label()}}
-        {{form.attend()}}
-        {{form.member.label()}}
-        {{form.member()}}
-        {{form.message.label()}}
-        {{form.message()}}
-        {{form.submit()}}
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <p>{{message}}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {{form.hidden_tag()}}
+    {{form.name.label()}}
+    {{form.name()}}
+    {{form.email.label()}}
+    {{form.email()}}
+    {{form.phone.label()}}
+    {{form.phone()}}
+    {{form.attend.label()}}
+    {{form.attend()}}
+    {{form.member.label()}}
+    {{form.member()}}
+    {{form.message.label()}}
+    {{form.message()}}
+    {{form.submit()}}
     </form>
     </div>
 </body>
