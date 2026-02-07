@@ -7,22 +7,21 @@ from datetime import datetime
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "r5924hfrkfdswdwj"
 
-
-file_path = 'rsvp_form.csv'
-file_exists = os.path.isfile(file_path)
-print(os.path)
-
 @app.route("/", methods=["GET","POST"])
 def home():
     form = RsvpForm()
     if form.validate_on_submit():
         print(form.data['name'], form.data['email'])
         headers = ["NAME", "EMAIL", "PHONE", "ATTEND", "MEMBER", "MESSAGE", "DATE_FILLED"]
-        with open ('rsvp_form.csv', 'a', newline='') as file:
+
+        file_path = 'rsvp_form.csv'
+        file_exists = os.path.isfile(file_path)
+
+        with open (file_path, 'a', newline='') as file:
             writer = csv.writer(file)
             
             if not file_exists:
-                print("csv file is not found")
+                print("csv file is not found...writing headers")
                 writer.writerow(headers)
             writer.writerow([form.data["name"],form.data["email"],form.data["phone"],
                              form.data["attend"],form.data["member"],form.data["message"], datetime.now().strftime("%Y-%m-%d")])
@@ -33,6 +32,11 @@ def home():
 @app.route("/menexcel_form")
 def download_csv():
     # Replace 'MySecret123' with your own strong secret
+    file_path = 'rsvp_form.csv'
+    if not os.path.isfile(file_path):
+        flash("No submissions yet!")
+        return redirect("/")
+
     secret_key = request.args.get("key")
     if secret_key != "BondMen_@1234":
         abort(403)  # Forbidden if key is wrong
