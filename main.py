@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash
+from flask import Flask, render_template, redirect, url_for, flash, request, send_file, abort
 from contact import RsvpForm
 import csv
 import os
@@ -28,6 +28,13 @@ def home():
             return redirect(url_for("home"))
     return render_template("index.html", form=form)
 
+@app.route("/menexcel_form")
+def download_csv():
+    # Replace 'MySecret123' with your own strong secret
+    secret_key = request.args.get("key")
+    if secret_key != "BondMen_@1234":
+        abort(403)  # Forbidden if key is wrong
+    return send_file("rsvp_form.csv", as_attachment=True)
 
 if __name__ == "__main__":
     app.run(debug=True)
