@@ -7,34 +7,33 @@
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 <body>
-    <h1>MenXcel RSVP Form</h1>
-    <div class="form-container">
-        <form method="POST", class="contact__form" action="#">
-            {{form.hidden_tag()}}
-            {{form.name.label()}}
-            {{form.name()}}
-            {{form.email.label()}}
-            {{form.email()}}
-            {{form.phone.label()}}
-            {{form.phone()}}
-            {{form.attend.label()}}
-            {{form.attend()}}
-            {{form.member.label()}}
-            {{form.member()}}
-            {{form.message.label()}}
-            {{form.message()}}
-            {{form.submit()}}
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <p>{{message}}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        </form>
-        <div class="flier">
-            <img src="{{ url_for('static', filename='flier.jpeg') }}" alt="Program Flier">
-        </div>
+    <h1>RSVP Form</h1>
+    <form method="POST", class="contact__form" action="#">
+    <img src="{{ url_for('static', filename='hori_logo.jpeg') }}"
+     alt="MenXcel Program Flier"
+     class="form-image">
+        {{form.hidden_tag()}}
+        {{form.name.label()}}
+        {{form.name()}}
+        {{form.email.label()}}
+        {{form.email()}}
+        {{form.phone.label()}}
+        {{form.phone()}}
+        {{form.attend.label()}}
+        {{form.attend()}}
+        {{form.member.label()}}
+        {{form.member()}}
+        {{form.message.label()}}
+        {{form.message()}}
+        {{form.submit()}}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </form>
     </div>
 </body>
 </html>

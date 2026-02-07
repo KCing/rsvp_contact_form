@@ -24,7 +24,7 @@ body {
    =============================== */
 h1 {
     margin: 5px 0 20px 0;
-    color: #6C63FF;
+    color: #352302;
     font-size: 2rem;
     text-align: center;
 }
@@ -41,8 +41,8 @@ h1 {
     font-weight: bold;
     font-size: medium;
     width: 40vw;
-    max-width: 600px;
-    padding: 40px 30px;
+    max-width: 500px;
+    padding: 30px 30px;
     border-radius: 1rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border-top: 5px solid #6C63FF; /* accent color */
@@ -163,6 +163,14 @@ h1 {
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
+.form-image {
+    border-radius: 2rem;
+    width: 100%;
+    max-width: 650px;
+
+    margin-top: -13px;     /* pulls it upward */
+    margin-bottom: 10px;  /* controls space below */
+}
 
 /* ===============================
    Responsive Design
